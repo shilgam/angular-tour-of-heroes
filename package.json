@@ -1,0 +1,13 @@
+{
+  "name": "angular-tour-local-setup",
+  "version": "1.0.0",
+  "description": "This guide explains how to set up your environment for Angular development using the Angular CLI tool",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
