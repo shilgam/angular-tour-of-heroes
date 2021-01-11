@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "This guide explains how to set up your environment for Angular development using the Angular CLI tool",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@angular/cli": "^11.0.6"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
