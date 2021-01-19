@@ -20,13 +20,13 @@ export class HeroService {
     private messageService: MessageService
   ) { }
 
+  /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
-    // TODO: send the message _after_ fetching the heroes
-    this.messageService.add('HeroService: fetched heroes');
     return this.http.get<Hero[]>(this.heroesUrl)
-    .pipe(
-      catchError(this.handleError<Hero[]>('getHeroes', []))
-    );
+      .pipe(
+        tap(_ => this.log('fetched heroes')),
+        catchError(this.handleError<Hero[]>('getHeroes', []))
+      );
   }
 
   getHero(id: number): Observable<Hero | undefined> {
