@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,18 +16,10 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent,
-    DashboardComponent,
-    HeroSearchComponent
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
     HttpClientModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
@@ -37,7 +29,14 @@ import { MessagesComponent } from './messages/messages.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent,
+    HeroSearchComponent
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
