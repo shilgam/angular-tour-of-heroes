@@ -6,6 +6,10 @@ node_js:
   - "10"
 
 addons:
+  # to install deb file of stable chrome https://stackoverflow.com/a/62432435
+  apt:
+    packages:
+      - dpkg
   chrome: stable
 
 cache:
