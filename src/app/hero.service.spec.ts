@@ -33,14 +33,20 @@ describe('HeroService', () => {
     httpMock.verify();
   });
 
+  function setup() {
+    const handleErrorSpy = spyOn<any>(heroService, 'handleError').and.callThrough();
+    const logSpy = spyOn<any>(heroService, 'log').and.callThrough();
+    const addSpy = spyOn(messageService, 'add').and.callThrough();
+
+    return { handleErrorSpy, logSpy, addSpy };
+  }
+
   it('should be created', () => {
     expect(heroService).toBeTruthy();
   });
 
   it(`should get heroes`, () => {
-    const handleErrorSpy = spyOn<any>(heroService, 'handleError').and.callThrough();
-    const logSpy = spyOn<any>(heroService, 'log').and.callThrough();
-    const addSpy = spyOn(messageService, 'add').and.callThrough();
+    const { handleErrorSpy, logSpy, addSpy } = setup();
 
     heroService.getHeroes().subscribe( (heroes: Hero[]) => {
       expect(heroes.length).toEqual(3);
@@ -64,10 +70,7 @@ describe('HeroService', () => {
   it('should handle error: getHeroes', () => {
     const expectedLog = `getHeroes ${errorMessage}`;
     const expectedMessage = `HeroService: getHeroes ${errorMessage}`;
-
-    const handleErrorSpy = spyOn<any>(heroService, 'handleError').and.callThrough();
-    const logSpy = spyOn<any>(heroService, 'log').and.callThrough();
-    const addSpy = spyOn(messageService, 'add').and.callThrough();
+    const { handleErrorSpy, logSpy, addSpy } = setup();
 
     heroService.getHeroes().subscribe( (heroes: Hero[]) => {
       expect(heroes.length).toEqual(0);
@@ -89,10 +92,7 @@ describe('HeroService', () => {
   it(`should get hero`, () => {
     const expectedLog = 'fetched hero id=11';
     const expectedMessage = 'HeroService: fetched hero id=11';
-
-    const handleErrorSpy = spyOn<any>(heroService, 'handleError').and.callThrough();
-    const logSpy = spyOn<any>(heroService, 'log').and.callThrough();
-    const addSpy = spyOn(messageService, 'add').and.callThrough();
+    const { handleErrorSpy, logSpy, addSpy } = setup();
 
     heroService.getHero(11).subscribe(hero => {
       expect(hero.id).toEqual(11);
@@ -116,10 +116,7 @@ describe('HeroService', () => {
     const errorMsg = 'failed: Http failure response for api/heroes/13: 404 Bad Request';
     const expectedLog = `getHero id=13 ${errorMsg}`;
     const expectedMessage = `HeroService: getHero id=13 ${errorMsg}`;
-
-    const handleErrorSpy = spyOn<any>(heroService, 'handleError').and.callThrough();
-    const logSpy = spyOn<any>(heroService, 'log').and.callThrough();
-    const addSpy = spyOn(messageService, 'add').and.callThrough();
+    const { handleErrorSpy, logSpy, addSpy } = setup();
 
     heroService.getHero(13).subscribe( response => {
       expect(response).toBeUndefined();
@@ -141,10 +138,7 @@ describe('HeroService', () => {
   it('should update hero', () => {
     const expectedLog = 'updated hero id=12';
     const expectedMessage = 'HeroService: updated hero id=12';
-
-    const handleErrorSpy = spyOn<any>(heroService, 'handleError').and.callThrough();
-    const logSpy = spyOn<any>(heroService, 'log').and.callThrough();
-    const addSpy = spyOn(messageService, 'add').and.callThrough();
+    const { handleErrorSpy, logSpy, addSpy } = setup();
 
     heroService.updateHero(mockHeroes[1]).subscribe( response => {
       expect(response).toEqual(mockHeroes[1]);
@@ -166,10 +160,7 @@ describe('HeroService', () => {
   it('should handle error: updateHero', () => {
     const expectedLog = `updateHero ${errorMessage}`;
     const expectedMessage = `HeroService: updateHero ${errorMessage}`;
-
-    const handleErrorSpy = spyOn<any>(heroService, 'handleError').and.callThrough();
-    const logSpy = spyOn<any>(heroService, 'log').and.callThrough();
-    const addSpy = spyOn(messageService, 'add').and.callThrough();
+    const { handleErrorSpy, logSpy, addSpy } = setup();
 
     heroService.updateHero(mockHeroes[1]).subscribe( response => {
       expect(response).toBeUndefined();
