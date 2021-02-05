@@ -32,7 +32,7 @@ describe('HeroesComponent', () => {
 
 
 
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -57,8 +57,8 @@ describe('HeroesComponent', () => {
     }
   };
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [ FormsModule, RouterTestingModule ],
       declarations: [ HeroesComponent, HeroDetailComponent ],
       providers: [{
@@ -67,14 +67,14 @@ describe('HeroesComponent', () => {
       }]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeroesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     compiled = fixture.debugElement.nativeElement;
-    heroService = TestBed.get(HeroService);
+    heroService = TestBed.inject(HeroService);
   });
 
   it('should create', () => {
