@@ -30,6 +30,7 @@ describe('HeroService', () => {
   });
 
   afterEach(() => {
+    // assert that there are no outstanding requests.
     httpMock.verify();
   });
 
@@ -48,14 +49,24 @@ describe('HeroService', () => {
   it(`should get heroes`, () => {
     const { handleErrorSpy, logSpy, addSpy } = setup();
 
+    // Make an HTTP GET request
     heroService.getHeroes().subscribe( (heroes: Hero[]) => {
+      // When observable resolves, result should match test data
       expect(heroes.length).toEqual(3);
       expect(heroes[0].id).toEqual(11);
       expect(heroes[0].name).toEqual(`Dr Nice`);
     });
 
+    // The following `expectOne()` will match the request's URL.
+    // If no requests or multiple requests matched that URL
+    // `expectOne()` would throw.
     const request = httpMock.expectOne( `api/heroes`, 'call to getHeroes');
+
+    // Assert that the request is a GET.
     expect(request.request.method).toBe('GET');
+
+    // Respond with mock data, causing Observable to resolve.
+    // Subscribe callback asserts that correct data was returned.
     request.flush(mockHeroes);
 
     expect(handleErrorSpy).toHaveBeenCalledTimes(1);
