@@ -13,7 +13,7 @@ import { Hero } from '../hero';
 describe('HeroDetailComponent', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
-  let compiled: any;
+  let hostDE: any;
   let heroService: any;
   let heroServiceStub: Partial<HeroService> = {
     getHero(id: number): Observable<Hero> {
@@ -47,7 +47,7 @@ describe('HeroDetailComponent', () => {
       fixture = TestBed.createComponent(HeroDetailComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
-      compiled = fixture.debugElement.nativeElement;
+      hostDE = fixture.debugElement.nativeElement;
       heroService = TestBed.inject(HeroService);
       buttons = fixture.debugElement.queryAll(By.css('button'));
     });
@@ -57,12 +57,12 @@ describe('HeroDetailComponent', () => {
     });
 
     it(`should have title ${expectedHero.name} Details`, () => {
-      expect(compiled.querySelector('h2').textContent)
+      expect(hostDE.querySelector('h2').textContent)
         .toEqual(`${(expectedHero.name).toUpperCase()} Details`);
     });
 
     it(`should have id ${expectedHero.id}`, async () => {
-      expect(compiled.querySelector('div > div:nth-child(2)').textContent)
+      expect(hostDE.querySelector('div > div:nth-child(2)').textContent)
         .toEqual(`id: ${expectedHero.id}`);
     });
 
@@ -107,19 +107,26 @@ describe('HeroDetailComponent', () => {
       fixture = TestBed.createComponent(HeroDetailComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
-      compiled = fixture.debugElement.nativeElement;
+      hostDE = fixture.debugElement.nativeElement;
       heroService = TestBed.inject(HeroService);
     });
 
     it('input should accept new value', async () => {
       const inputBox = fixture.debugElement.query(By.css('input')).nativeElement;
-      inputBox.value = 'Foo';
+      // simulate user entering a new name into the input box
+      inputBox.value = 'Updated';
+
+      // Dispatch a DOM event so that Angular learns of input value change.
+      // In older browsers, such as IE, you might need a CustomEvent instead. See
+      // https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
       inputBox.dispatchEvent(new Event('input'));
+
+      // Tell Angular to update the display binding through the title pipe
       fixture.detectChanges();
 
-      expect(inputBox.value).toBe('Foo');
-      expect(compiled.querySelector('h2').textContent)
-        .toEqual(`FOO Details`);
+      expect(inputBox.value).toBe('Updated');
+      expect(hostDE.querySelector('h2').textContent)
+        .toEqual(`UPDATED Details`);
     });
   });
 });
