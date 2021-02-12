@@ -17,7 +17,7 @@ cache:
      - ./node_modules
 
 install:
-  - npm install
+  - npm ci --no-optional
 
 script:
   - npm run testCI
