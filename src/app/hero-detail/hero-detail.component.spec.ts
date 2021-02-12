@@ -81,14 +81,14 @@ describe('HeroDetailComponent', () => {
     expect(inputBox.value).toEqual(expectedHero.name);
   });
 
-  it(`should have go back button`, () => {
+  it('should have go back button', () => {
     expect(buttons[0].nativeElement.textContent).toEqual('go back');
   });
 
-  it(`should have save button`, () => {
+  it('should have save button', () => {
     expect(buttons[1].nativeElement.textContent).toEqual('save');
   });
-})
+});
 
 describe('HeroDetailComponent: Update', () => {
   let fixture: ComponentFixture<HeroDetailComponent>;
@@ -118,6 +118,6 @@ describe('HeroDetailComponent: Update', () => {
 
     expect(inputBox.value).toBe('Tornado Updated');
     expect(hostDE.querySelector('h2').textContent)
-      .toEqual(`TORNADO UPDATED Details`);
+      .toEqual('TORNADO UPDATED Details');
   });
 });

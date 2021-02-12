@@ -46,7 +46,7 @@ describe('HeroService', () => {
     expect(heroService).toBeTruthy();
   });
 
-  it(`should get heroes`, () => {
+  it('should get heroes', () => {
     const { handleErrorSpy, logSpy, addSpy } = setup();
 
     // Make an HTTP GET request
@@ -54,13 +54,13 @@ describe('HeroService', () => {
       // When observable resolves, result should match test data
       expect(heroes.length).toEqual(3);
       expect(heroes[0].id).toEqual(11);
-      expect(heroes[0].name).toEqual(`Dr Nice`);
+      expect(heroes[0].name).toEqual('Dr Nice');
     });
 
     // The following `expectOne()` will match the request's URL.
     // If no requests or multiple requests matched that URL
     // `expectOne()` would throw.
-    const request = httpMock.expectOne( `api/heroes`, 'call to getHeroes');
+    const request = httpMock.expectOne( 'api/heroes', 'call to getHeroes');
 
     // Assert that the request is a GET.
     expect(request.request.method).toBe('GET');
@@ -87,7 +87,7 @@ describe('HeroService', () => {
       expect(heroes.length).toEqual(0);
     });
 
-    const request = httpMock.expectOne( `api/heroes`, 'call to getHeroes');
+    const request = httpMock.expectOne( 'api/heroes', 'call to getHeroes');
     expect(request.request.method).toBe('GET');
     request.flush(invalidRequestBody, invalidRequestOptions);
 
@@ -100,17 +100,17 @@ describe('HeroService', () => {
     expect(addSpy).toHaveBeenCalledWith(expectedMessage);
   });
 
-  it(`should get hero`, () => {
+  it('should get hero', () => {
     const expectedLog = 'fetched hero id=11';
     const expectedMessage = 'HeroService: fetched hero id=11';
     const { handleErrorSpy, logSpy, addSpy } = setup();
 
     heroService.getHero(11).subscribe(hero => {
       expect(hero.id).toEqual(11);
-      expect(hero.name).toEqual(`Dr Nice`);
+      expect(hero.name).toEqual('Dr Nice');
     });
 
-    const request = httpMock.expectOne( `api/heroes/11`, 'call to getHero');
+    const request = httpMock.expectOne( 'api/heroes/11', 'call to getHero');
     expect(request.request.method).toBe('GET');
     request.flush(mockHeroes[0]);
 
@@ -133,7 +133,7 @@ describe('HeroService', () => {
       expect(response).toBeUndefined();
     });
 
-    const request = httpMock.expectOne( `api/heroes/13`, 'call to getHero');
+    const request = httpMock.expectOne( 'api/heroes/13', 'call to getHero');
     expect(request.request.method).toBe('GET');
     request.flush(invalidRequestBody, invalidRequestOptions);
 

@@ -10,6 +10,7 @@ import { HeroService } from '../hero.service';
 import { heroesClone } from '../mock-heroes';
 import { Hero } from '../hero';
 
+
 async function setup() {
   let component: HeroesComponent;
   let fixture: ComponentFixture<HeroesComponent>;
@@ -26,9 +27,9 @@ async function setup() {
   TestBed.configureTestingModule({
     imports: [ FormsModule, RouterTestingModule ],
     declarations: [ HeroesComponent, HeroDetailComponent ],
-    providers: [{
-      provide: HeroService,
-      useValue: heroServiceStub
+    providers: [
+      {
+      provide: HeroService,useValue: heroServiceStub
     }]
   });
 
@@ -52,7 +53,7 @@ describe('HeroesComponent', async () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have a hero`, () => {
+  it('should have a hero', () => {
     expect(component.heroes).toBeDefined();
     expect(component.heroes.length).toEqual(10);
   });
@@ -65,11 +66,11 @@ describe('HeroesComponent', async () => {
     });
   });
 
-  it(`should have 'heroes/:id'`, () => {
+  it('should have "heroes/:id"', () => {
     const heroes = fixture.debugElement.queryAll(By.css('.heroes > li > a'));
     heroes.forEach((hero, index) => {
       expect(heroes[index].nativeElement.getAttribute('href'))
-        .toContain(`detail`);
+        .toContain('detail');
     });
   });
 });
@@ -100,7 +101,7 @@ describe('HeroesComponent: Add', async () => {
 
     // click "add" button
     const addButton = fixture.debugElement.queryAll(By.css('button'))[0].nativeElement;
-    addButton.click()
+    addButton.click();
 
     // Assert that the new hero is displayed in the list
     fixture.detectChanges();
