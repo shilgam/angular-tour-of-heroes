@@ -29,7 +29,7 @@ async function setup() {
     declarations: [ HeroesComponent, HeroDetailComponent ],
     providers: [
       {
-      provide: HeroService,useValue: heroServiceStub
+      provide: HeroService, useValue: heroServiceStub
     }]
   });
 

@@ -30,8 +30,7 @@ async function setup() {
           { snapshot: { paramMap: convertToParamMap( { id: 20 } ) } }
       },
       {
-        provide: HeroService,
-        useValue: heroServiceStub
+        provide: HeroService, useValue: heroServiceStub
       }
     ]
   })
