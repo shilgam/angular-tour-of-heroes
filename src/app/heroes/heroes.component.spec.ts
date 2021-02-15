@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
+/* eslint-disable @typescript-eslint/require-await */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -12,13 +18,11 @@ import { Hero } from '../hero';
 
 
 async function setup() {
-  let component: HeroesComponent;
-  let fixture: ComponentFixture<HeroesComponent>;
-
   const heroServiceStub: Partial<HeroService> = {
     getHeroes(): Observable<Hero[]> {
       return of(heroesClone());
     },
+
     addHero(hero: Hero): Observable<Hero> {
       return of({ name: hero.name, id: 30 });
     }
@@ -33,8 +37,8 @@ async function setup() {
     }]
   });
 
-  fixture = TestBed.createComponent(HeroesComponent);
-  component = fixture.componentInstance;
+  const fixture: ComponentFixture<HeroesComponent> = TestBed.createComponent(HeroesComponent);
+  const component: HeroesComponent = fixture.componentInstance;
   fixture.detectChanges();
   TestBed.inject(HeroService);
 

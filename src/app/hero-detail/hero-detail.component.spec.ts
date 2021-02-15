@@ -1,3 +1,7 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -10,11 +14,7 @@ import { HeroService } from '../hero.service';
 import { heroesClone } from '../mock-heroes';
 import { Hero } from '../hero';
 
-async function setup() {
-  let component: HeroDetailComponent;
-  let fixture: ComponentFixture<HeroDetailComponent>;
-  let hostDE: any;
-
+const setup = async () => {
   const heroServiceStub: Partial<HeroService> = {
     getHero(id: number): Observable<Hero> {
       return of(heroesClone().find(hero => hero.id === id));
@@ -36,10 +36,11 @@ async function setup() {
   })
   .compileComponents();
 
-  fixture = TestBed.createComponent(HeroDetailComponent);
-  component = fixture.componentInstance;
+  const fixture: ComponentFixture<HeroDetailComponent> = TestBed.createComponent(HeroDetailComponent);
+  const component: HeroDetailComponent = fixture.componentInstance;
   fixture.detectChanges();
-  hostDE = fixture.debugElement.nativeElement;
+
+  const hostDE: any = fixture.debugElement.nativeElement;
   TestBed.inject(HeroService);
 
   return { component, fixture, hostDE };
@@ -67,7 +68,7 @@ describe('HeroDetailComponent', () => {
       .toEqual(`${(expectedHero.name).toUpperCase()} Details`);
   });
 
-  it(`should have id ${expectedHero.id}`, async () => {
+  it(`should have id ${expectedHero.id}`, () => {
     expect(hostDE.querySelector('div > div:nth-child(2)').textContent)
       .toEqual(`id: ${expectedHero.id}`);
   });
