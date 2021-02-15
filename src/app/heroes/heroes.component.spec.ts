@@ -15,7 +15,7 @@ async function setup() {
   let component: HeroesComponent;
   let fixture: ComponentFixture<HeroesComponent>;
 
-  let heroServiceStub: Partial<HeroService> = {
+  const heroServiceStub: Partial<HeroService> = {
     getHeroes(): Observable<Hero[]> {
       return of(heroesClone());
     },
