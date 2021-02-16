@@ -13,5 +13,22 @@
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     "semi": ["error", "always"],
     "quotes": [2, "single"]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.spec.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.spec.json"
+      },
+      "extends": [
+        "plugin:jasmine/recommended" // https://github.com/tlvince/eslint-plugin-jasmine/blob/v4.1.2/README.md#configuration
+      ],
+      "plugins": [
+        "eslint-plugin-jasmine"
+      ],
+      "env": {
+        "jasmine": true
+      }
+    }
+  ]
 }

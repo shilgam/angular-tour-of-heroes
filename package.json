@@ -7,7 +7,7 @@
     "build": "ng build",
     "test": "ng test -- --browsers=ChromeHeadful",
     "testCI": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI",
-    "lint": "tsc --noEmit && eslint . --ext js,ts,json --quiet --fix",
+    "lint": "tsc --noEmit && eslint ./ --ext js,ts,json --fix",
     "e2e": "ng e2e --protractor-config=e2e/protractor.conf.js",
     "e2eCI": "ng e2e --protractor-config=e2e/protractor-ci.conf.js"
   },
