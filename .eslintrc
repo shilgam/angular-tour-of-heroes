@@ -16,9 +16,9 @@
   },
   "overrides": [
     {
-      "files": ["src/**/*.spec.ts"],
+      "files": ["src/**/*.spec.ts", "e2e/**/*.e2e-spec.ts"],
       "parserOptions": {
-        "project": "./tsconfig.spec.json"
+        "project": ["./tsconfig.spec.json", "./e2e/tsconfig.json"]
       },
       "extends": [
         "plugin:jasmine/recommended" // https://github.com/tlvince/eslint-plugin-jasmine/blob/v4.1.2/README.md#configuration
