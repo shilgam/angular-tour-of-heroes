@@ -1,23 +1,22 @@
 {
-    "[javascript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-      "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-      },
-      "editor.formatOnSave": false
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-      "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-      },
-      "editor.formatOnSave": false
-    },
-    "[json]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-      "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-      },
-      "editor.formatOnSave": false
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
     }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint" // "esbenp.prettier-vscode",
+  },
+  "json.format.enable": false, // Toggle default JSON formatter (requires restart; required for JSON)
+  "editor.formatOnSave": true, // Format a file on save (required for JSON)
+  "files.associations": {
+    "*.json": "jsonc"
   }
+}

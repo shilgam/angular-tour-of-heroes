@@ -23,11 +23,16 @@
       "extends": [
         "plugin:jasmine/recommended" // https://github.com/tlvince/eslint-plugin-jasmine/blob/v4.1.2/README.md#configuration
       ],
-      "plugins": [
-        "eslint-plugin-jasmine"
-      ],
+      "plugins": ["eslint-plugin-jasmine"],
       "env": {
         "jasmine": true
+      }
+    },
+    {
+      "files": ["**.json"],
+      "rules": {
+        "semi": ["error", "never"],
+        "quotes": [2, "double"]
       }
     }
   ]
