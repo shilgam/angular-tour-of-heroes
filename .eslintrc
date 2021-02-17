@@ -16,6 +16,17 @@
   },
   "overrides": [
     {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.*?.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": ["airbnb-typescript/base"],
+      "rules": {
+        "@typescript-eslint/comma-dangle": "off" // ["error"]
+      }
+    },
+    {
       "files": ["src/**/*.spec.ts", "e2e/**/*.e2e-spec.ts"],
       "parserOptions": {
         "project": ["./tsconfig.spec.json", "./e2e/tsconfig.json"]
