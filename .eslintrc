@@ -36,6 +36,9 @@
       "plugins": ["eslint-plugin-jasmine"],
       "env": {
         "jasmine": true
+      },
+      "rules": {
+        "prefer-const": ["warn"]
       }
     },
     {
