@@ -10,12 +10,8 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
@@ -32,6 +28,7 @@ describe('AppComponent', () => {
   it('should render title', () => {
     fixture.detectChanges();
     const h1 = fixture.nativeElement.querySelector('h1');
+
     expect(h1.textContent).toContain('Tour of Heroes');
   });
 });

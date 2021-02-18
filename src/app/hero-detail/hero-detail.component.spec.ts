@@ -15,26 +15,26 @@ async function setup() {
   let fixture: ComponentFixture<HeroDetailComponent>;
   let hostDE: any;
 
-  let heroServiceStub: Partial<HeroService> = {
+  const heroServiceStub: Partial<HeroService> = {
     getHero(id: number): Observable<Hero> {
-      return of(heroesClone().find(hero => hero.id === id));
+      return of(heroesClone().find((hero) => hero.id === id));
     }
   };
 
   await TestBed.configureTestingModule({
-    imports: [ FormsModule, RouterTestingModule ],
-    declarations: [ HeroDetailComponent ],
+    imports: [FormsModule, RouterTestingModule],
+    declarations: [HeroDetailComponent],
     providers: [
       {
-        provide: ActivatedRoute, useValue:
-          { snapshot: { paramMap: convertToParamMap( { id: 20 } ) } }
+        provide: ActivatedRoute,
+        useValue: { snapshot: { paramMap: convertToParamMap({ id: 20 }) } }
       },
       {
-        provide: HeroService, useValue: heroServiceStub
+        provide: HeroService,
+        useValue: heroServiceStub
       }
     ]
-  })
-  .compileComponents();
+  }).compileComponents();
 
   fixture = TestBed.createComponent(HeroDetailComponent);
   component = fixture.componentInstance;
@@ -43,7 +43,7 @@ async function setup() {
   TestBed.inject(HeroService);
 
   return { component, fixture, hostDE };
-};
+}
 
 describe('HeroDetailComponent', () => {
   const expectedHero: Hero = { id: 20, name: 'Tornado' };
@@ -53,7 +53,7 @@ describe('HeroDetailComponent', () => {
   let fixture: ComponentFixture<HeroDetailComponent>;
   let hostDE: any;
 
-  beforeEach( async () => {
+  beforeEach(async () => {
     ({ component, fixture, hostDE } = await setup());
     buttons = fixture.debugElement.queryAll(By.css('button'));
   });
@@ -63,13 +63,15 @@ describe('HeroDetailComponent', () => {
   });
 
   it(`should have title ${expectedHero.name} Details`, () => {
-    expect(hostDE.querySelector('h2').textContent)
-      .toEqual(`${(expectedHero.name).toUpperCase()} Details`);
+    expect(hostDE.querySelector('h2').textContent).toEqual(
+      `${expectedHero.name.toUpperCase()} Details`
+    );
   });
 
   it(`should have id ${expectedHero.id}`, async () => {
-    expect(hostDE.querySelector('div > div:nth-child(2)').textContent)
-      .toEqual(`id: ${expectedHero.id}`);
+    expect(hostDE.querySelector('div > div:nth-child(2)').textContent).toEqual(
+      `id: ${expectedHero.id}`
+    );
   });
 
   it(`should have text '${expectedHero.name}' in the input`, async () => {
@@ -77,6 +79,7 @@ describe('HeroDetailComponent', () => {
     await fixture.whenStable();
 
     const inputBox = fixture.debugElement.query(By.css('input')).nativeElement;
+
     expect(inputBox.value).toEqual(expectedHero.name);
   });
 
@@ -102,6 +105,7 @@ describe('HeroDetailComponent: Update', () => {
 
     fixture.detectChanges();
     await fixture.whenStable();
+
     expect(inputBox.value).toBe('Tornado');
 
     // simulate user entering a new name into the input box
@@ -116,7 +120,8 @@ describe('HeroDetailComponent: Update', () => {
     fixture.detectChanges();
 
     expect(inputBox.value).toBe('Tornado Updated');
-    expect(hostDE.querySelector('h2').textContent)
-      .toEqual('TORNADO UPDATED Details');
+    expect(hostDE.querySelector('h2').textContent).toEqual(
+      'TORNADO UPDATED Details'
+    );
   });
 });

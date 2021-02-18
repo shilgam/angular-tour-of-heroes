@@ -10,12 +10,11 @@ import { HeroService } from '../hero.service';
 import { heroesClone } from '../mock-heroes';
 import { Hero } from '../hero';
 
-
 async function setup() {
   let component: HeroesComponent;
   let fixture: ComponentFixture<HeroesComponent>;
 
-  let heroServiceStub: Partial<HeroService> = {
+  const heroServiceStub: Partial<HeroService> = {
     getHeroes(): Observable<Hero[]> {
       return of(heroesClone());
     },
@@ -25,12 +24,14 @@ async function setup() {
   };
 
   TestBed.configureTestingModule({
-    imports: [ FormsModule, RouterTestingModule ],
-    declarations: [ HeroesComponent, HeroDetailComponent ],
+    imports: [FormsModule, RouterTestingModule],
+    declarations: [HeroesComponent, HeroDetailComponent],
     providers: [
       {
-      provide: HeroService, useValue: heroServiceStub
-    }]
+        provide: HeroService,
+        useValue: heroServiceStub
+      }
+    ]
   });
 
   fixture = TestBed.createComponent(HeroesComponent);
@@ -39,7 +40,7 @@ async function setup() {
   TestBed.inject(HeroService);
 
   return { component, fixture };
-};
+}
 
 describe('HeroesComponent', async () => {
   let component: HeroesComponent;
@@ -69,8 +70,9 @@ describe('HeroesComponent', async () => {
   it('should have "heroes/:id"', () => {
     const heroes = fixture.debugElement.queryAll(By.css('.heroes > li > a'));
     heroes.forEach((hero, index) => {
-      expect(heroes[index].nativeElement.getAttribute('href'))
-        .toContain('detail');
+      expect(heroes[index].nativeElement.getAttribute('href')).toContain(
+        'detail'
+      );
     });
   });
 });
@@ -83,7 +85,8 @@ describe('HeroesComponent: Add', async () => {
   });
 
   it('input should accept new value', async () => {
-    const nameInputBox = fixture.debugElement.query(By.css('input')).nativeElement;
+    const nameInputBox = fixture.debugElement.query(By.css('input'))
+      .nativeElement;
 
     // simulate user entering a new name into the input box
     nameInputBox.value = 'Hercules';
@@ -100,12 +103,15 @@ describe('HeroesComponent: Add', async () => {
     expect(nameInputBox.value).toBe('Hercules');
 
     // click "add" button
-    const addButton = fixture.debugElement.queryAll(By.css('button'))[0].nativeElement;
+    const addButton = fixture.debugElement.queryAll(By.css('button'))[0]
+      .nativeElement;
     addButton.click();
 
     // Assert that the new hero is displayed in the list
     fixture.detectChanges();
-    const heroesList = fixture.debugElement.query(By.css('.heroes')).nativeElement;
+    const heroesList = fixture.debugElement.query(By.css('.heroes'))
+      .nativeElement;
+
     expect(heroesList.textContent).toContain('Hercules');
   });
 });

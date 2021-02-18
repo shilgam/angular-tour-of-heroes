@@ -7,9 +7,7 @@ describe('InMemoryDataService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ]
+      imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(InMemoryDataService);
   });

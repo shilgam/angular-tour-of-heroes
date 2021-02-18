@@ -9,12 +9,9 @@ describe('HeroSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroSearchComponent ],
-      imports: [
-        HttpClientTestingModule,
-      ]
-    })
-    .compileComponents();
+      declarations: [HeroSearchComponent],
+      imports: [HttpClientTestingModule]
+    }).compileComponents();
   });
 
   beforeEach(() => {

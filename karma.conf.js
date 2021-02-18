@@ -27,10 +27,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/angular-tour-of-heroes'),
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      reporters: [{ type: 'html' }, { type: 'text-summary' }]
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
@@ -46,7 +43,7 @@ module.exports = function (config) {
       ChromeHeadful: {
         base: 'Chrome',
         flags: ['--no-sandbox']
-      },
+      }
     },
     singleRun: false,
     restartOnFileChange: true
