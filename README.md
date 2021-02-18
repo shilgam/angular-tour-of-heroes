@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Local development
 
-1. If use VS Code editor: Install following VS Code extensions to support ESLint and Prettier:
+1.  If use VS Code editor: Install following VS Code extensions to support ESLint and Prettier:
 
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode

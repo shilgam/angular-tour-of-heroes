@@ -3,7 +3,7 @@ sudo: false
 
 language: node_js
 node_js:
-  - "10"
+  - '10'
 
 addons:
   # to install deb file of stable chrome https://stackoverflow.com/a/62432435
@@ -14,7 +14,7 @@ addons:
 
 cache:
   directories:
-     - ./node_modules
+    - ./node_modules
 
 install:
   - npm ci --no-optional
