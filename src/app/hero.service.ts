@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable spaced-comment */
+/* eslint-disable import/prefer-default-export */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -48,6 +51,7 @@ export class HeroService {
       return of([]);
     }
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      // eslint-disable-next-line no-confusing-arrow
       tap(x => x.length ?
          this.log(`found heroes matching "${term}"`) :
          this.log(`no heroes matching "${term}"`)),

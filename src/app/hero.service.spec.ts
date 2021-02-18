@@ -11,6 +11,7 @@ describe('HeroService', () => {
   let httpMock: HttpTestingController;
   const invalidRequestBody = 'Invalid request parameters';
   const invalidRequestOptions = { status: 404, statusText:  'Bad Request' };
+  // eslint-disable-next-line prettier/prettier
   const errorMessage = 'failed: Http failure response for api/heroes: 404 Bad Request';
 
   const mockHeroes: Hero[] = [
@@ -124,6 +125,7 @@ describe('HeroService', () => {
   });
 
   it('should handle error: getHero', () => {
+    // eslint-disable-next-line prettier/prettier
     const errorMsg = 'failed: Http failure response for api/heroes/13: 404 Bad Request';
     const expectedLog = `getHero id=13 ${errorMsg}`;
     const expectedMessage = `HeroService: getHero id=13 ${errorMsg}`;
