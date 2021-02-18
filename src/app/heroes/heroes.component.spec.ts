@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of } from 'rxjs';
 
-import { HeroesComponent } from './heroes.component';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
+import HeroesComponent from './heroes.component';
+import HeroDetailComponent from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
-import { heroesClone } from '../mock-heroes';
-import { Hero } from '../hero';
+import heroesClone from '../mock-heroes';
+import Hero from '../hero';
 
 async function setup() {
   let component: HeroesComponent;

@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash';
 
-import { Hero } from './hero';
+import Hero from './hero';
 
 const HEROES: Hero[] = [
   { id: 11, name: 'Dr Nice' },
@@ -15,4 +15,6 @@ const HEROES: Hero[] = [
   { id: 20, name: 'Tornado' }
 ];
 
-export const heroesClone = () => cloneDeep(HEROES);
+const heroesClone = (): Hero[] => cloneDeep(HEROES);
+
+export default heroesClone;

@@ -5,8 +5,8 @@ import {
 } from '@angular/common/http/testing';
 
 import { HeroService } from './hero.service';
-import { MessageService } from './message.service';
-import { Hero } from './hero';
+import MessageService from './message.service';
+import Hero from './hero';
 
 describe('HeroService', () => {
   let heroService: HeroService;

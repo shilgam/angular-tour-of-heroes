@@ -5,10 +5,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { HeroDetailComponent } from './hero-detail.component';
+import HeroDetailComponent from './hero-detail.component';
 import { HeroService } from '../hero.service';
-import { heroesClone } from '../mock-heroes';
-import { Hero } from '../hero';
+import heroesClone from '../mock-heroes';
+import Hero from '../hero';
 
 async function setup() {
   let component: HeroDetailComponent;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero } from '../hero';
+import Hero from '../hero';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { HeroService } from '../hero.service';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
 })
-export class HeroDetailComponent implements OnInit {
+export default class HeroDetailComponent implements OnInit {
   hero: Hero | undefined;
 
   constructor(
