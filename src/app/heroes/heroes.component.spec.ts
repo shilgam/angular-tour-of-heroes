@@ -5,7 +5,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of } from 'rxjs';
 
 import HeroesComponent from './heroes.component';
-import HeroDetailComponent from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
 import heroesClone from '../mock-heroes';
 import Hero from '../hero';
@@ -25,7 +24,7 @@ async function setup() {
 
   TestBed.configureTestingModule({
     imports: [FormsModule, RouterTestingModule],
-    declarations: [HeroesComponent, HeroDetailComponent],
+    declarations: [HeroesComponent],
     providers: [
       {
         provide: HeroService,
