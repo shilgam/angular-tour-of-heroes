@@ -12,7 +12,10 @@
     }
   },
   "[json]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint" // "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "json.format.enable": false, // Toggle default JSON formatter (requires restart; required for JSON)
   "editor.formatOnSave": true, // Format a file on save (required for JSON)
