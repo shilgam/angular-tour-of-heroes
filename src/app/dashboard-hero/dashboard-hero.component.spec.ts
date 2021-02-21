@@ -23,6 +23,9 @@ describe('DashboardHeroComponent', () => {
     fixture = TestBed.createComponent(DashboardHeroComponent);
     component = fixture.componentInstance;
 
+    heroDe = fixture.debugElement.query(By.css('.hero'));
+    heroEl = heroDe.nativeElement;
+
     // mock the hero supplied by the parent component
     expectedHero = { id: 42, name: 'Hero Name' };
 
@@ -35,5 +38,21 @@ describe('DashboardHeroComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display hero name in uppercase', () => {
+    const expectedPipedName = expectedHero.name.toUpperCase();
+
+    expect(heroEl.textContent).toContain(expectedPipedName);
+  });
+
+  it('should raise selected event when clicked (triggerEventHandler)', () => {
+    let selectedHero: Hero;
+    component.selected.subscribe((hero: Hero) => {
+      selectedHero = hero;
+    });
+    heroDe.triggerEventHandler('click', null);
+
+    expect(selectedHero).toBe(expectedHero);
   });
 });
