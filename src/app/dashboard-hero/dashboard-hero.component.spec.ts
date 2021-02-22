@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
+import { click } from 'src/utils';
 import DashboardHeroComponent from './dashboard-hero.component';
 import Hero from '../hero';
 
@@ -67,6 +68,18 @@ describe('DashboardHeroComponent', () => {
       });
 
       heroEl.click();
+
+      expect(selectedHero).toBe(expectedHero);
+    });
+
+    /* option #3: using helper function */
+    it('should raise selected event (w/ helper function)', () => {
+      let selectedHero: Hero;
+      component.selected.subscribe((hero: Hero) => {
+        selectedHero = hero;
+      });
+
+      click(heroEl); /* or click(heroDe) */
 
       expect(selectedHero).toBe(expectedHero);
     });
