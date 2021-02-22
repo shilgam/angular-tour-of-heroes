@@ -13,7 +13,7 @@ import MessageService from './message.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HeroService {
+export default class HeroService {
   private heroesUrl = 'api/heroes'; // URL to web api
 
   httpOptions = {

@@ -6,7 +6,7 @@ import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 import HeroDetailComponent from './hero-detail.component';
-import { HeroService } from '../hero.service';
+import HeroService from '../hero.service';
 import heroesClone from '../mock-heroes';
 import Hero from '../hero';
 

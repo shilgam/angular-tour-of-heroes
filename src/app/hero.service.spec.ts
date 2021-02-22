@@ -4,7 +4,7 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 
-import { HeroService } from './hero.service';
+import HeroService from './hero.service';
 import MessageService from './message.service';
 import Hero from './hero';
 
