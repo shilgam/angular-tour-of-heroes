@@ -50,13 +50,15 @@ describe('DashboardHeroComponent', () => {
   });
 
   describe('Clicking the hero', () => {
-    /* option #1 */
-    it('should raise selected event (triggerEventHandler)', () => {
-      let selectedHero: Hero;
+    let selectedHero: Hero;
+    beforeEach(() => {
       component.selected.subscribe((hero: Hero) => {
         selectedHero = hero;
       });
+    });
 
+    /* option #1 */
+    it('should raise selected event (triggerEventHandler)', () => {
       heroDe.triggerEventHandler('click', null);
 
       expect(selectedHero).toBe(expectedHero);
@@ -64,11 +66,6 @@ describe('DashboardHeroComponent', () => {
 
     /* option #2 */
     it('should raise selected event (element.click)', () => {
-      let selectedHero: Hero;
-      component.selected.subscribe((hero: Hero) => {
-        selectedHero = hero;
-      });
-
       heroEl.click();
 
       expect(selectedHero).toBe(expectedHero);
@@ -76,11 +73,6 @@ describe('DashboardHeroComponent', () => {
 
     /* option #3: using helper function */
     it('should raise selected event (w/ helper function)', () => {
-      let selectedHero: Hero;
-      component.selected.subscribe((hero: Hero) => {
-        selectedHero = hero;
-      });
-
       click(heroEl); /* or click(heroDe) */
 
       expect(selectedHero).toBe(expectedHero);
@@ -111,6 +103,7 @@ describe('DashboardHeroComponent when inside a test host', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      /** declares both the DashboardHeroComponent and the TestHostComponent */
       declarations: [DashboardHeroComponent, TestHostComponent]
     }).compileComponents();
   });
