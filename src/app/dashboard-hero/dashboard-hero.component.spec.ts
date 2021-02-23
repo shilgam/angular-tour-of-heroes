@@ -1,8 +1,10 @@
+/* eslint-disable spaced-comment */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { click } from 'src/utils';
+import { Component } from '@angular/core';
 import DashboardHeroComponent from './dashboard-hero.component';
 import Hero from '../hero';
 
@@ -83,5 +85,54 @@ describe('DashboardHeroComponent', () => {
 
       expect(selectedHero).toBe(expectedHero);
     });
+  });
+});
+
+/////////////////////////////////
+////// Test Host Component //////
+@Component({
+  template: `<dashboard-hero [hero]="hero" (selected)="onSelected($event)">
+  </dashboard-hero>`
+})
+class TestHostComponent {
+  hero: Hero = { id: 42, name: 'Hero Name' };
+
+  selectedHero: Hero;
+
+  onSelected(hero: Hero) {
+    this.selectedHero = hero;
+  }
+}
+
+describe('DashboardHeroComponent when inside a test host', () => {
+  let testHost: TestHostComponent;
+  let fixture: ComponentFixture<TestHostComponent>;
+  let heroEl: HTMLElement;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [DashboardHeroComponent, TestHostComponent]
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
+    /* create TestHostComponent instead of DashboardHeroComponent */
+    fixture = TestBed.createComponent(TestHostComponent);
+    testHost = fixture.componentInstance;
+    heroEl = fixture.nativeElement.querySelector('.hero');
+    fixture.detectChanges();
+  });
+
+  it('should display hero name', () => {
+    const expectedPipedName = testHost.hero.name.toUpperCase();
+
+    expect(heroEl.textContent).toContain(expectedPipedName);
+  });
+
+  it('should raise selected event when clicked', () => {
+    click(heroEl);
+
+    // selected hero should be the same data bound hero
+    expect(testHost.selectedHero).toBe(testHost.hero);
   });
 });
