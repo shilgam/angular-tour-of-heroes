@@ -83,8 +83,7 @@ describe('DashboardHeroComponent', () => {
 /////////////////////////////////
 ////// Test Host Component //////
 @Component({
-  template: `<dashboard-hero [hero]="hero" (selected)="onSelected($event)">
-  </dashboard-hero>`
+  template: '<dashboard-hero [hero]="hero" (selected)="onSelected($event)"> </dashboard-hero>'
 })
 class TestHostComponent {
   hero: Hero = { id: 42, name: 'Hero Name' };

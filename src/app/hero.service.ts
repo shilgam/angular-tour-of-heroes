@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable spaced-comment */
-/* eslint-disable import/prefer-default-export */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -20,18 +18,14 @@ export default class HeroService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) { }
+  constructor(private http: HttpClient, private messageService: MessageService) {}
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap((_) => this.log('fetched heroes')),
-        catchError(this.handleError<Hero[]>('getHeroes', []))
-      );
+    return this.http.get<Hero[]>(this.heroesUrl).pipe(
+      tap((_) => this.log('fetched heroes')),
+      catchError(this.handleError<Hero[]>('getHeroes', []))
+    );
   }
 
   /** GET hero by id. Will 404 if id not found */
@@ -50,10 +44,12 @@ export default class HeroService {
       return of([]);
     }
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-      // eslint-disable-next-line no-confusing-arrow
-      tap((x) => x.length
-        ? this.log(`found heroes matching "${term}"`)
-        : this.log(`no heroes matching "${term}"`)),
+      tap((x) => {
+        if (x.length) {
+          return this.log(`found heroes matching "${term}"`);
+        }
+        return this.log(`no heroes matching "${term}"`);
+      }),
       catchError(this.handleError<Hero[]>('searchHeroes', []))
     );
   }

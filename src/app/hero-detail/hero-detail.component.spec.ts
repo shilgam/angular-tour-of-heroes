@@ -120,8 +120,6 @@ describe('HeroDetailComponent: Update', () => {
     fixture.detectChanges();
 
     expect(inputBox.value).toBe('Tornado Updated');
-    expect(hostDE.querySelector('h2').textContent).toEqual(
-      'TORNADO UPDATED Details'
-    );
+    expect(hostDE.querySelector('h2').textContent).toEqual('TORNADO UPDATED Details');
   });
 });

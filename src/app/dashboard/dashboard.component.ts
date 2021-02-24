@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-nested-ternary */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -17,9 +15,9 @@ export default class DashboardComponent implements OnInit {
   constructor(private router: Router, private heroService: HeroService) {}
 
   ngOnInit(): void {
-    this.heroService
-      .getHeroes()
-      .subscribe((heroes) => { this.heroes = heroes.slice(1, 5); });
+    this.heroService.getHeroes().subscribe((heroes) => {
+      this.heroes = heroes.slice(1, 5);
+    });
   }
 
   gotoDetail(hero: Hero): void {
@@ -29,10 +27,9 @@ export default class DashboardComponent implements OnInit {
 
   get title(): string {
     const cnt = this.heroes.length;
-    return cnt === 0
-      ? 'No Heroes'
-      : cnt === 1
-        ? 'Top Hero'
-        : `Top ${cnt} Heroes`;
+    if (cnt === 0) {
+      return 'No Heroes';
+    }
+    return cnt === 1 ? 'Top Hero' : `Top ${cnt} Heroes`;
   }
 }

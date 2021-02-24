@@ -1,5 +1,4 @@
 /* eslint-disable spaced-comment */
-/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -126,7 +125,10 @@ function tests(heroClick: () => void) {
     });
 
     it('should HAVE heroes', () => {
-      expect(comp.heroes.length).toBeGreaterThan(0, 'should have heroes after service promise resolves');
+      expect(comp.heroes.length).toBeGreaterThan(
+        0,
+        'should have heroes after service promise resolves'
+      );
     });
 
     it('should DISPLAY heroes', () => {
