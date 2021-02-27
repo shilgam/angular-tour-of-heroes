@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 
 import HeroDetailComponent from './hero-detail.component';
 import HeroService from '../hero.service';
-import heroesClone from '../mock-heroes';
+import getTestHeroes from '../mock-heroes';
 import Hero from '../hero';
 
 async function setup() {
@@ -17,7 +17,7 @@ async function setup() {
 
   const heroServiceStub: Partial<HeroService> = {
     getHero(id: number): Observable<Hero> {
-      return of(heroesClone().find((hero) => hero.id === id));
+      return of(getTestHeroes().find((hero) => hero.id === id));
     }
   };
 

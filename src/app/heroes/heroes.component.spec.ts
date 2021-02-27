@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 
 import HeroesComponent from './heroes.component';
 import HeroService from '../hero.service';
-import heroesClone from '../mock-heroes';
+import getTestHeroes from '../mock-heroes';
 import Hero from '../hero';
 
 async function setup() {
@@ -15,7 +15,7 @@ async function setup() {
 
   const heroServiceStub: Partial<HeroService> = {
     getHeroes(): Observable<Hero[]> {
-      return of(heroesClone());
+      return of(getTestHeroes());
     },
     addHero(hero: Hero): Observable<Hero> {
       return of({ name: hero.name, id: 30 });
@@ -60,7 +60,7 @@ describe('HeroesComponent', async () => {
 
   it('should have a list of heroes', () => {
     const heroes = fixture.debugElement.queryAll(By.css('.heroes > li'));
-    heroesClone().forEach((hero, index) => {
+    getTestHeroes().forEach((hero, index) => {
       expect(heroes[index].nativeElement.textContent).toContain(hero.id);
       expect(heroes[index].nativeElement.textContent).toContain(hero.name);
     });

@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 import DashboardComponent from './dashboard.component';
 import DashboardHeroComponent from '../dashboard-hero/dashboard-hero.component';
 import HeroService from '../hero.service';
-import heroesClone from '../mock-heroes';
+import getTestHeroes from '../mock-heroes';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -94,7 +94,7 @@ function compileAndCreate() {
     comp = fixture.componentInstance;
 
     /** getHeroes spy returns observable of test heroes */
-    heroServiceSpy.getHeroes.and.returnValue(asyncData(heroesClone()));
+    heroServiceSpy.getHeroes.and.returnValue(asyncData(getTestHeroes()));
   });
 }
 

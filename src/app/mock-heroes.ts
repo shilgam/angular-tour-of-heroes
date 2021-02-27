@@ -15,6 +15,6 @@ const HEROES: Hero[] = [
   { id: 20, name: 'Tornado' }
 ];
 
-const heroesClone = (): Hero[] => cloneDeep(HEROES);
+const getTestHeroes = (): Hero[] => cloneDeep(HEROES);
 
-export default heroesClone;
+export default getTestHeroes;
