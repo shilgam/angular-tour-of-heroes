@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -15,6 +15,7 @@ import HeroesComponent from './heroes/heroes.component';
 import HeroSearchComponent from './hero-search/hero-search.component';
 import MessagesComponent from './messages/messages.component';
 import DashboardHeroComponent from './dashboard-hero/dashboard-hero.component';
+import { NameEditorComponent } from './name-editor/name-editor.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import DashboardHeroComponent from './dashboard-hero/dashboard-hero.component';
     MessagesComponent,
     DashboardHeroComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    NameEditorComponent
   ],
   imports: [
     BrowserModule,
