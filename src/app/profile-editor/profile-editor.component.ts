@@ -14,5 +14,10 @@ export class ProfileEditorComponent implements OnInit {
     lastName: new FormControl('')
   });
 
+  onSubmit(): void {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.profileForm.value); // NOTE: logs to browser console
+  }
+
   ngOnInit(): void {}
 }
