@@ -9,6 +9,10 @@ import { FormControl } from '@angular/forms';
 export class NameEditorComponent implements OnInit {
   name = new FormControl('');
 
+  updateName() {
+    this.name.setValue('Nancy');
+  }
+
   constructor() {}
 
   ngOnInit(): void {}
