@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -9,14 +9,16 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./profile-editor.component.css']
 })
 export class ProfileEditorComponent implements OnInit {
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    address: new FormGroup({
-      street: new FormControl(''),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      zip: new FormControl('')
+  constructor(private fb: FormBuilder) {}
+
+  profileForm = this.fb.group({
+    firstName: [''],
+    lastName: [''],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: ['']
     })
   });
 
