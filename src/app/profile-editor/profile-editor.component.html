@@ -34,5 +34,12 @@
   </div>
 
   <button type="submit" [disabled]="!profileForm.valid">Submit</button>
-  <button (click)="updateProfile()">Update Profile</button>
 </form>
+
+<p>Form Value: {{ profileForm.value | json }}</p>
+
+<p>Form Status: {{ profileForm.status }}</p>
+
+<p>
+  <button (click)="updateProfile()">Update Profile</button>
+</p>
