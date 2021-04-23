@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -12,7 +12,7 @@ export class ProfileEditorComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   profileForm = this.fb.group({
-    firstName: [''],
+    firstName: ['', Validators.required],
     lastName: [''],
     address: this.fb.group({
       street: [''],
