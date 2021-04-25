@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -9,11 +11,9 @@ import { FormControl } from '@angular/forms';
 export class NameEditorComponent implements OnInit {
   name = new FormControl('');
 
-  updateName() {
+  updateName(): void {
     this.name.setValue('Nancy');
   }
-
-  constructor() {}
 
   ngOnInit(): void {}
 }
