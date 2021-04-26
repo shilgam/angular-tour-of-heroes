@@ -93,7 +93,7 @@ function tests() {
   });
 
   it('can get RouterLinks from template', () => {
-    expect(routerLinks.length).toBe(4, 'should have 2 routerLinks');
+    expect(routerLinks.length).toBe(5, 'should have 2 routerLinks');
     expect(routerLinks[0].linkParams).toBe('/dashboard');
     expect(routerLinks[1].linkParams).toBe('/heroes');
   });
