@@ -14,12 +14,6 @@ export class ProfileEditorComponent implements OnInit {
   profileForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: [''],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: ['']
-    }),
     aliases: this.fb.array([this.fb.control('')])
   });
 
