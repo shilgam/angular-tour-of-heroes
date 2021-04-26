@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
-
-  constructor() { }
+  data: string;
 
   ngOnInit(): void {
+    this.data = 'Hii from parent';
   }
-
 }
