@@ -17,6 +17,7 @@ import MessagesComponent from './messages/messages.component';
 import DashboardHeroComponent from './dashboard-hero/dashboard-hero.component';
 import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
     DashboardComponent,
     HeroSearchComponent,
     NameEditorComponent,
-    ProfileEditorComponent
+    ProfileEditorComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
