@@ -1,7 +1,8 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable import/prefer-default-export */
 
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-editor',
@@ -9,12 +10,10 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./profile-editor.component.css']
 })
 export class ProfileEditorComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
-
-  profileForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: [''],
-    aliases: this.fb.array([this.fb.control('')])
+  profileForm = new FormGroup({
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl(''),
+    aliases: new FormArray([new FormControl('')])
   });
 
   onSubmit(): void {
@@ -38,6 +37,6 @@ export class ProfileEditorComponent implements OnInit {
   }
 
   addAlias(): void {
-    this.aliases.push(this.fb.control(''));
+    this.aliases.push(new FormControl(''));
   }
 }

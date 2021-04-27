@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-address',
@@ -10,16 +10,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddressComponent implements OnInit {
   @Input() parentFormGroup: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
-
   ngOnInit(): void {
     this.parentFormGroup.addControl(
       'address',
-      this.fb.group({
-        street: ['', Validators.required],
-        city: [''],
-        state: [''],
-        zip: ['']
+      new FormGroup({
+        street: new FormControl('', Validators.required),
+        city: new FormControl(''),
+        state: new FormControl(''),
+        zip: new FormControl('')
       })
     );
   }

@@ -1,9 +1,8 @@
-/* eslint-disable object-curly-newline */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AddressComponent } from './address.component';
 
@@ -81,11 +80,9 @@ describe('AddressComponent', () => {
     <p>Address isDirty: {{ address.isDirty }}</p> `
 })
 class TestHostComponent {
-  constructor(private fb: FormBuilder) {}
-
   profileForm: FormGroup;
 
   ngOnInit() {
-    this.profileForm = this.fb.group({});
+    this.profileForm = new FormGroup({});
   }
 }
