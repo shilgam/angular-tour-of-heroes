@@ -18,6 +18,8 @@ import DashboardHeroComponent from './dashboard-hero/dashboard-hero.component';
 import { NameEditorComponent } from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { AddressComponent } from './address/address.component';
+import { AComponent } from './a/a.component';
+import { BComponent } from './b/b.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AddressComponent } from './address/address.component';
     HeroSearchComponent,
     NameEditorComponent,
     ProfileEditorComponent,
-    AddressComponent
+    AddressComponent,
+    AComponent,
+    BComponent
   ],
   imports: [
     BrowserModule,
