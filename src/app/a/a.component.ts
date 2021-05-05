@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./a.component.css']
 })
 export class AComponent implements OnInit {
+  name = 'I am A component';
 
-  constructor() { }
+  text = 'A message for the child component';
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

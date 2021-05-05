@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable import/prefer-default-export */
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-b',
@@ -6,10 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./b.component.css']
 })
 export class BComponent implements OnInit {
+  @Input('text') text = 'A message in the child component';
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
