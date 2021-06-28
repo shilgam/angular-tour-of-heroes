@@ -22,7 +22,13 @@ export class BComponent implements OnInit {
      * on the page to the user.**
      * And this will be very difficult to debug.
      */
-    this.parent.text = 'updated text';
+    setTimeout(() => {
+      /** // Dirty hack #1
+       *  // Update property asynchronously
+       */
+      this.parent.text = 'updated text';
+    });
+    // this.parent.text = 'updated text';
     // this.parent.name = 'updated name';
   }
 }
